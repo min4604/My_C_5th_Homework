@@ -5,15 +5,18 @@
 
 int main(void)
 {
-	int n[10] = { 32,27,64,18,95,14,90,70,60,37 };
-	int i;
+	int a;
+	int *aPtr;
 	
-	printf("%s%13s\n", "Element", "Value");
+	a = 7;
+	aPtr = &a;
 
-	for (i = 0; i < 10; i++)
-	{
-		printf("%7d%13d\n", i, n[i]);
-	}
+	printf("The address of a is %p\nThe value of aPtr is %p", &a, aPtr);
+
+	printf("\n\nThe value of a is %d\nThe value of aPtr is %d", a, *aPtr);
+
+	printf("\n\nShowing that * and & are complements of each other\n&*aPtr = %p\n*&aPtr = %p\n", &*aPtr, *&aPtr);
+
 	system("pause");
 	return 0;
 }
