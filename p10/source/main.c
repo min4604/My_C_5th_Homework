@@ -1,24 +1,22 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10
+
+void cubeByference(int *nPtr);
 
 int main(void)
 {
-	int n[SIZE] = { 19,3,15,7,11,9,13,5,17,1 };
-	int i;
-	int j;
+	int number = 5;
+	printf("The original value of number is %d", number);
 
-	printf("%s%13s%17s\n", "Element", "Value", "Histogram");
+	cubeByference(&number);
 
-	for (i = 0; i < SIZE; i++)
-	{
-		printf("%7d%13d ", i, n[i]);
-		for (j = 1; j <= n[i]; j++)
-		{
-			printf("%c",'*');
-		}
-		printf("\n");
-	}
+	printf("\nThe new value of number is %d\n", number);
+
 	system("pause");
 	return 0;
+}
+
+void cubeByference(int *nPtr)
+{
+	*nPtr = *nPtr * *nPtr * *nPtr;
 }
