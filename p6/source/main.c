@@ -1,21 +1,22 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10
+
+int cubeByValue(int n);
 
 int main(void)
 {
-	int s[SIZE];
-	int j;
-	for (j = 0; j < SIZE; j++)
-	{
-		s[j] = 2 + 2 * j;
-	}
-	printf("%s%13s\n", "Element", "Value");
+	int number = 5;
+	printf("The original value of number is %d", number);
 
-	for (j = 0; j < SIZE; j++)
-	{
-		printf("%7d%13d\n", j, s[j]);
-	}
+	number = cubeByValue(number);
+
+	printf("\nThe new value of number is %d\n", number);
+
 	system("pause");
 	return 0;
+}
+
+int cubeByValue(int n)
+{
+	return n *n * n;
 }
