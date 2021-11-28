@@ -1,23 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
-
 int main(void)
 {
-	char string1[20];
-	char string2[] = "string literal";
+	int b[] = { 10,20,30,40 };
+	int *bPtr = b;
 	int i;
+	int offset;
 
-	printf("Enter a string: ");
-	scanf_s("%s",string1,sizeof(string1));
-	printf("string1 is: %s\nstring2 is %s\n", string1, string2);
-	printf("string1 with spaces between characters is: \n");
+	printf("Array b printed with:\nArray subscript notation\n");
+	for (i = 0; i < 4; i++)
+	{
+		printf("b[%d] = %d\n", i, b[i]);
+	}
+	
+	printf("\nPointer/offset notation where\nthe pointer is the array name \n");
 
-	for (i = 0; string1[i] != '\0'; i++)
-		printf("%c", string1[i]);
+	for (offset = 0; offset < 4; offset++)
+	{
+		printf("*(b + %d) = %d\n", offset, *(b + offset));
+	}
 
-	printf("\n");
+	printf("\nPointer subscript notation\n");
+	for (i = 0; i < 4; i++)
+	{
+		printf("bPtr[%d] = %d\n", i, bPtr[i]);
+	}
+
+	printf("\nPointer/offset notation\n");
+	for (offset = 0; offset < 4; offset++)
+	{
+		printf("*(bPtr + %d) = %d\n", offset, *(bPtr + offset));
+	}
 
 
 	system("pause");
