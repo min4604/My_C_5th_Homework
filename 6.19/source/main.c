@@ -1,107 +1,56 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10
-int bubbleSort1(int a[], int size);
-int bubbleSort2(int a[], int size);
+#include<time.h>
+#include<math.h>
 
 int main(void)
 {
-	int dt[SIZE] = { 2,5,25,11,3,7,72,28,20,78 },i,c;
-	printf("The original array are :\n");
-	for (i = 0; i < SIZE; i++)
+	int com[11] = { 0 };
+	float com1[11] = { 0 };
+	int as, bs,all,times;
+	srand(time(0));
+	
+	for (times = 0; times < 36000; times++)
 	{
-		printf("%3d  ", dt[i]);
+		as = rand() % 6 + 1;
+		bs = rand() % 6 + 1;
+		all = as + bs;
+		com[all - 2]++;
+	}
+	printf("%7d%7d%7d%7d%7d%7d%7d%7d%7d%7d%7d\n",2,3,4,5,6,7,8,9,10,11,12);
+	all = 0;
+	for (times = 0; times < 11; times++)
+	{
+		printf("%7d",com[times]);
+		all += com[times];
+	}
+	printf("\n實際機率\n");
+	for (times = 0; times < 11; times++)
+	{
+		printf("%7.3f", (float)com[times]/36000);
+	}
+	printf("\n計算機率\n");
+	for (times = 1; times < 7; times++)
+	{
+		com1[times - 1] = (float)times / 36;
+	}
+	for (times = 5; times >0; times--)
+	{
+		com1[11-times] = (float)times / 36;
+	}
+	for (times = 0; times <11; times++)
+	{
+		printf("%7.3f", com1[times]);
 	}
 	printf("\n");
-	c=bubbleSort1(dt, SIZE);
-	printf("\n\nThe bubbleSort1 array are :\n");
-	for (i = 0; i < SIZE; i++)
+	for (times = 0; times < 11; times++)
 	{
-		printf("%3d  ", dt[i]);
+		if ((abs(com1[times] - (float)com[times] / 36000)) < 0.01)
+		{
+			printf("%2d的機率合理\n", times + 2);
+		}
+		
 	}
-	printf("\nuse %d times", c);
-	printf("\n\n");
-
-	int dt2[SIZE] = { 2,5,25,11,3,7,72,28,20,78 };
-	printf("The original array are :\n");
-	for (i = 0; i < SIZE; i++)
-	{
-		printf("%3d  ", dt2[i]);
-	}
-	printf("\n");
-	c = bubbleSort2(dt2, SIZE);
-	printf("\n\nThe bubbleSort2 array are :\n");
-	for (i = 0; i < SIZE; i++)
-	{
-		printf("%3d  ", dt2[i]);
-	}
-	printf("\nuse %d times", c);
-	printf("\n\n");
 	system("pause");
 	return 0;
-}
-
-int bubbleSort1(int a[], int size)
-{
-	int i, j,ram,c=0,ii;
-	for (i = size; i >= 0; i--)
-	{
-		for (j = 1; j < i; j++)
-		{
-			if (a[j - 1] > a[j])
-			{
-				ram = a[j];
-				a[j] = a[j - 1];
-				a[j - 1] = ram;
-				
-			}
-			
-		}
-		c++;
-		
-		printf("\n");
-		for (ii = 0; ii < SIZE; ii++)
-		{
-			printf("%3d  ", a[ii]);
-		}
-	}
-	return c;
-}
-
-int bubbleSort2(int a[], int size)
-{
-	int i, j, ram, c = 0,flag,ii;
-	for (i = size; i >= 0; i--)
-	{
-		flag = 0;
-		for (j = 1; j < i; j++)
-		{
-			
-			if (a[j - 1] > a[j])
-			{
-				flag = 1;
-				ram = a[j];
-				a[j] = a[j - 1];
-				a[j - 1] = ram;
-
-			}
-			
-			
-		}
-		c++;
-		
-		printf("\n");
-		if (flag == 0)
-		{
-			c--;
-			return c;
-		}
-		for (ii = 0; ii < SIZE; ii++)
-		{
-			printf("%3d  ", a[ii]);
-		}
-		  
-		
-	}
-	return c;
 }
