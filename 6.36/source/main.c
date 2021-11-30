@@ -1,52 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 5
 
-void modifyArray(int b[], int size);
-void modifyElement(int e);
+void reverser(char str[]);
 
 int main(void)
 {
-	int a[SIZE] = { 0,1,2,3,4 };
-	int i;
-
-	printf("Effects of passing entire array by reference:\n\n");
-	printf("Thevalues of the original array are:\n");
-
-	for (i = 0; i < SIZE; i++)
-	{
-		printf("%3d", a[i]);
-	}
-	printf("\n");
-
-	modifyArray(a, SIZE);
-	printf("Thevalues of the modified array are:\n");
-	for (i = 0; i < SIZE; i++)
-	{
-		printf("%3d", a[i]);
-	}
-
-	printf("\n\n\nEffects of passing array element");
-	printf("by value:\n\nThe value of a[3] is %d\n", a[3]);
-
-	modifyElement(a[3]);
-	printf("The value of a[3] is %d \n", a[3]);
-
+	char str[50];
+	printf("輸入一串英文:");
+	scanf_s("%s", str, sizeof(str));
+	reverser(str);
 	system("pause");
 	return 0;
 }
 
-void modifyArray( int b[], int size)
+void reverser(char str[])
 {
-	int j;
-
-	for (j = 0; j < size; j++)
+	int i=0,j;
+	while (str[i] != '\0')
 	{
-		b[j] *= 2;
+		i++;
 	}
-}
-
-void modifyElement(int e)
-{
-	printf("Value in modifyElement is %d\n", e *= 2);
+	for (j = i-1; j >= 0; j--)
+	{
+		printf("%c", str[j]);
+	}
+	printf("\n");
 }
