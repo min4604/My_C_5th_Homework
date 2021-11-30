@@ -13,16 +13,11 @@ int main(void)
 	return 0;
 }
 
-void reverser(char str[])
+void reverser(char *x)
 {
-	int i=0,j;
-	while (str[i] != '\0')
+	if (*x!='\0')
 	{
-		i++;
+		reverser(x + 1);
+		printf("%c", *x);
 	}
-	for (j = i-1; j >= 0; j--)
-	{
-		printf("%c", str[j]);
-	}
-	printf("\n");
 }
